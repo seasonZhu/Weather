@@ -25,7 +25,7 @@ struct CityHourlyView : View {
                             .font(.body)
                         Text(hour.temperature.formattedTemperature)
                             .font(.headline)
-                    }
+                    }.frame(width: 88)
                 }
             }
             .padding([.trailing, .leading])

@@ -12,7 +12,10 @@ struct CityListView : View {
     
     @EnvironmentObject var cityStore: CityStore
     
+    /// 这个使用binding是否有present
     @State var isPresentingModal: Bool = false
+    
+    /// 这个没有使用
     @State private var isEditing: Bool = false
     
     var body: some View {

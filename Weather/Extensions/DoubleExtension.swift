@@ -19,3 +19,14 @@ extension Double {
     }
     
 }
+
+extension Optional where Wrapped == Double {
+    var formattedTemperature: String {
+        switch self {
+        case .none:
+            return "-" + "ºC"
+        case .some(let doube):
+            return doube.formattedTemperature
+        }
+    }
+}

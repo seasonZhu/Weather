@@ -8,11 +8,11 @@
 
 import UIKit
 
-class NetworkManager: NSObject {
+class NetworkManager {
     
     struct Key {
         
-        static let darkSky: String = "" // Enter your darkSky API key here
+        static let darkSky: String = "68dbaef8a2b953c7299974b13785426b" // Enter your darkSky API key here
         static let googleMaps: String = "" // Enter your google maps API key here
         
     }

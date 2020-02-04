@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CityValidation: NSObject {
+class CityValidation {
     
     class func validateCity(withID placeID: String, _ completion: @escaping (_ city: City?) -> Void) {
         guard let url = URL(string: NetworkManager.APIURL.cityData(for: placeID)) else {

@@ -9,16 +9,15 @@
 import SwiftUI
 import Combine
 
-class CityCompletion: NSObject, ObservableObject {
+class CityCompletion: ObservableObject {
     
     private var completionManager: CityCompletionManager
         
     @Published var predictions: [CityCompletion.Prediction] = []
     
-    override init() {
+    init() {
         predictions = []
         completionManager = CityCompletionManager()
-        super.init()
     }
     
     func search(_ search: String) {

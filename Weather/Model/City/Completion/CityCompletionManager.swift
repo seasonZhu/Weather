@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CityCompletionManager: NSObject {
+class CityCompletionManager {
     
     var completionTask: URLSessionDataTask?
     

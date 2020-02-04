@@ -27,6 +27,17 @@ class City: ObservableObject{
         self.getWeather()
     }
     
+    static func wuhan() -> City {
+        let wuhan = City()
+        wuhan.name = "武汉"
+        wuhan.longitude = 114.30
+        wuhan.latitude = 30.60
+        wuhan.image = nil
+        wuhan.weather = nil
+        wuhan.getWeather()
+        return wuhan
+    }
+    
     init(cityData data: CityValidation.CityData) {
         self.name = data.name
         self.longitude = data.geometry.location.longitude
