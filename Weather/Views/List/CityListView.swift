@@ -10,9 +10,10 @@ import SwiftUI
 
 struct CityListView : View {
     
+    /// 全局的修饰器  跨组件快速访问全局数据源
     @EnvironmentObject var cityStore: CityStore
     
-    /// 这个使用binding是否有present
+    /// 这个使用binding是否有present @State用途就是用来修饰属性,以保证该属性是可以被改变了
     @State var isPresentingModal: Bool = false
     
     /// 这个没有使用
