@@ -69,7 +69,7 @@ extension SceneDelegate: LocationDelegate {
         }) {
             return
         }
-        cityStore.cities.append(city)
+        cityStore.cities.insert(city, at: 0)
     }
     
     func onLocationFail(error: Error?) {
