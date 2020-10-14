@@ -10,6 +10,8 @@ import UIKit
 import SwiftUI
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
+    
+    let cityDatasKey = "cityDatasKey"
 
     var window: UIWindow?
     
@@ -19,6 +21,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = scene as? UIWindowScene else {
             return
         }
+        
+        readData()
         
         LocationManager.appleInstance.setLocationDelegate(self).startLocation()
         
@@ -30,10 +34,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
     
     func sceneDidDisconnect(_ scene: UIScene) {
-        // Called as the scene is being released by the system.
-        // This occurs shortly after the scene enters the background, or when its session is discarded.
-        // Release any resources associated with this scene that can be re-created the next time the scene connects.
-        // The scene may re-connect later, as its session was not neccessarily discarded (see `application:didDiscardSceneSessions` instead).
+        /// 程序退出 保存数据
+        saveData()
     }
 
     func sceneDidBecomeActive(_ scene: UIScene) {
@@ -72,5 +74,22 @@ extension SceneDelegate: LocationDelegate {
     
     func onLocationFail(error: Error?) {
         cityStore.cities.append(City.wuhan())
+    }
+}
+
+extension SceneDelegate {
+    func saveData() {
+        let cityDatas: [Data] = cityStore.cities.compactMap { try? JSONEncoder().encode(CityInSandBox(name: $0.name, longitude: $0.longitude, latitude: $0.latitude)) }
+        UserDefaults.standard.set(cityDatas, forKey: cityDatasKey)
+    }
+    
+    func readData() {
+        let value = UserDefaults.standard.value(forKey: cityDatasKey)
+        if let cityDatas = value as? [Data] {
+            let citys = cityDatas
+                .compactMap { try? JSONDecoder().decode(CityInSandBox.self, from: $0) }
+                .compactMap { City(name: $0.name, longitude: $0.longitude, latitude: $0.latitude) }
+            cityStore.cities.append(contentsOf: citys)
+        }
     }
 }
