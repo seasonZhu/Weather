@@ -21,11 +21,12 @@ struct CityRow : View {
                 Spacer()
                 HStack {
                     city.weather?.current.icon.image
-                        .foregroundColor(Color.gray)
+                        .foregroundColor(.gray)
                         .font(.title)
                     Text(city.weather?.current.temperature.formattedTemperature ?? "-ºC")
                         .foregroundColor(.gray)
                         .font(.title)
+                        .fixedSize()
                 }
             }
             .padding([.trailing, .top, .bottom])

@@ -60,7 +60,7 @@ struct CityListView : View {
             cityStore.cities.remove(at: index)
         }
         
-        cityStore.cities.insert(contentsOf: removeCities, at: destination)
+        cityStore.cities.insert(contentsOf: removeCities, at: destination - 1)
     }
     
 }
