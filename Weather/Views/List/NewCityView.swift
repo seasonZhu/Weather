@@ -23,7 +23,7 @@ struct NewCityView : View {
                 Section {
                     TextField("Search City", text: $search, onCommit:  {
                         self.completer.search(self.search)
-                    })
+                    }).keyboardType(.default)
                 }
                 
                 Section {
@@ -71,6 +71,8 @@ struct NewCityView : View {
         let city = City(name: name, longitude: longitude, latitude: latitude)
         self.cityStore.cities.append(city)
         self.presentationMode.wrappedValue.dismiss()
+        
+        isValidating = false
     }
     
 }
