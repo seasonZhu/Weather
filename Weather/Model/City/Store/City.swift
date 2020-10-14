@@ -9,7 +9,7 @@
 import SwiftUI
 import Combine
 
-class City: ObservableObject{
+class City: ObservableObject {
         
     var name: String
     var longitude: Double
@@ -26,12 +26,12 @@ class City: ObservableObject{
         self.weather = nil
         self.getWeather()
     }
-    
+
     static func wuhan() -> City {
         let wuhan = City(name: "武汉", longitude: 114.30, latitude: 30.60)
         return wuhan
     }
-    
+
     private func getWeather() {
         WeatherManager.getWeather(for: self) { (weather) in
             DispatchQueue.main.async {

@@ -127,11 +127,11 @@ extension LocationApple {
                 return
             }
             
-            UIApplication.shared.openURL(url)
+            UIApplication.shared.open(url, options: [:])
         }
         alertController.addAction(actionCancel)
         alertController.addAction(actionOK)
         
-        UIApplication.shared.keyWindow?.rootViewController?.present(alertController, animated: true, completion: nil)
+        UIApplication.shared.windows.last?.rootViewController?.present(alertController, animated: true, completion: nil)
     }
 }

@@ -20,8 +20,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             return
         }
         
-        LocationManager.appleInstance.startLocation()
-        LocationManager.appleInstance.setLocationDelegate(self)
+        LocationManager.appleInstance.setLocationDelegate(self).startLocation()
         
         let window = UIWindow(windowScene: windowScene)
         
