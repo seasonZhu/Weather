@@ -12,14 +12,19 @@ import SwiftUI
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
+    
+    let cityStore = CityStore()
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = scene as? UIWindowScene else {
             return
         }
         
+        LocationManager.appleInstance.startLocation()
+        LocationManager.appleInstance.setLocationDelegate(self)
+        
         let window = UIWindow(windowScene: windowScene)
-        let cityStore = CityStore()
+        
         window.rootViewController = UIHostingController(rootView: CityListView().environmentObject(cityStore))
         self.window = window
         window.makeKeyAndVisible()
@@ -56,3 +61,17 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 }
 
+extension SceneDelegate: LocationDelegate {
+    func onLocationSuccess(city: City) {
+        if cityStore.cities.contains(where: { (cityInArray) -> Bool in
+            city.name == cityInArray.name
+        }) {
+            return
+        }
+        cityStore.cities.append(city)
+    }
+    
+    func onLocationFail(error: Error?) {
+        cityStore.cities.append(City.wuhan())
+    }
+}
