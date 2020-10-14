@@ -12,28 +12,39 @@ extension CityCompletion {
     
     struct Result: Codable {
         
-        var predictions: [Prediction]
-        
-        enum CodingKeys: String, CodingKey {
-            
-            case predictions = "predictions"
-            
-        }
+        let count : String?
+        let geocodes : [Geocode]?
+        let info : String?
+        let infocode : String?
+        let status : String?
         
     }
     
-    struct Prediction: Codable, Identifiable {
-        
-        var id: String
-        var description: String
-        
-        enum CodingKeys: String, CodingKey {
-            
-            case id = "place_id"
-            case description = "description"
-            
+    struct Geocode : Codable, Identifiable {
+        var id: String {
+            return adcode ?? ""
         }
-        
-    }
     
+        let adcode : String?
+        let city : String?
+        let citycode : String?
+        let country : String?
+        let formattedAddress : String?
+        let level : String?
+        let location : String?
+        let province : String?
+
+
+        enum CodingKeys: String, CodingKey {
+            case adcode = "adcode"
+            case city = "city"
+            case citycode = "citycode"
+            case country = "country"
+            case formattedAddress = "formatted_address"
+            case level = "level"
+            case location = "location"
+            case province = "province"
+
+        }
+    }
 }

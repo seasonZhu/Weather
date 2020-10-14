@@ -12,7 +12,7 @@ class CityCompletionManager {
     
     var completionTask: URLSessionDataTask?
     
-    func getCompletion(for search: String, _ completion: @escaping (_ results: [CityCompletion.Prediction]) -> Void) {
+    func getCompletion(for search: String, _ completion: @escaping (_ results: [CityCompletion.Geocode]) -> Void) {
         guard let url = URL(string: NetworkManager.APIURL.cityCompletion(for: search)) else {
             completion([])
             return
@@ -29,7 +29,11 @@ class CityCompletionManager {
             do {
                 let decoder = JSONDecoder()
                 let result = try decoder.decode(CityCompletion.Result.self, from: data)
-                completion(result.predictions)
+                guard let geocodes = result.geocodes else {
+                    completion([])
+                    return
+                }
+                completion(geocodes)
             } catch {
                 print(error.localizedDescription)
                 completion([])

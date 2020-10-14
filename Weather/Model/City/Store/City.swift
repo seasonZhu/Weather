@@ -18,6 +18,15 @@ class City: ObservableObject{
     @Published var image: UIImage?
     @Published var weather: Weather?
     
+    init(name: String, longitude: Double, latitude: Double) {
+        self.name = name
+        self.longitude = longitude
+        self.latitude = latitude
+        self.image = nil
+        self.weather = nil
+        self.getWeather()
+    }
+    
     init() {
         self.name = "Chambéry"
         self.longitude = 5.915807

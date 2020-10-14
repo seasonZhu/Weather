@@ -27,12 +27,12 @@ struct NewCityView : View {
                 }
                 
                 Section {
-                    ForEach(completer.predictions) { prediction in
+                    ForEach(completer.geocodes) { geocode in
                         Button(action: {
-                            self.addCity(from: prediction)
+                            self.addCity(from: geocode)
                             self.presentationMode.wrappedValue.dismiss()
                         }) {
-                            Text(prediction.description)
+                            Text(geocode.city ?? "")
                                 .foregroundColor(.primary)
                         }
                     }
@@ -53,21 +53,24 @@ struct NewCityView : View {
         }
     }
     
-    private func addCity(from prediction: CityCompletion.Prediction) {
+    private func addCity(from geocode: CityCompletion.Geocode) {
         isValidating = true
-        
-        CityValidation.validateCity(withID: prediction.id) { (city) in
-            if let city = city {
-                DispatchQueue.main.async {
-                    self.cityStore.cities.append(city)
-                    self.presentationMode.wrappedValue.dismiss()
-                }
-            }
-            
-            DispatchQueue.main.async {
-                self.isValidating = false
-            }
+        guard let name = geocode.city, let location = geocode.location else {
+            self.cityStore.cities.append(City.wuhan())
+            self.presentationMode.wrappedValue.dismiss()
+            return
         }
+        
+        let array = location.components(separatedBy: ",")
+        guard array.count == 2, let longitude = Double(array[0]), let latitude = Double(array[1]) else {
+            self.cityStore.cities.append(City.wuhan())
+            self.presentationMode.wrappedValue.dismiss()
+            return
+        }
+        
+        let city = City(name: name, longitude: longitude, latitude: latitude)
+        self.cityStore.cities.append(city)
+        self.presentationMode.wrappedValue.dismiss()
     }
     
 }

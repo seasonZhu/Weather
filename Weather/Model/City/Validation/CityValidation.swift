@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// 无用类
 class CityValidation {
     
     class func validateCity(withID placeID: String, _ completion: @escaping (_ city: City?) -> Void) {

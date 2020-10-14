@@ -13,17 +13,17 @@ class CityCompletion: ObservableObject {
     
     private var completionManager: CityCompletionManager
         
-    @Published var predictions: [CityCompletion.Prediction] = []
+    @Published var geocodes: [CityCompletion.Geocode] = []
     
     init() {
-        predictions = []
+        geocodes = []
         completionManager = CityCompletionManager()
     }
     
     func search(_ search: String) {
-        completionManager.getCompletion(for: search) { (predictions) in
+        completionManager.getCompletion(for: search) { (geocodes) in
             DispatchQueue.main.async {
-                self.predictions = predictions
+                self.geocodes = geocodes
             }
         }
     }

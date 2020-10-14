@@ -27,15 +27,6 @@ struct CityWeatherView : View {
                     CityDailyView(day: day)
                 }
             }
-            
-            ForEach(0..<10) { (index) in
-                Section(header: Text("\(index)")
-                    .foregroundColor(.orange)
-                    .font(.system(.body))
-                ) {
-                    Text("\(index * 10)")
-                }
-            }
         }
         .navigationBarTitle(Text(city.name))
     }
