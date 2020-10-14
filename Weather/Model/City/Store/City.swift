@@ -47,15 +47,6 @@ class City: ObservableObject{
         return wuhan
     }
     
-    init(cityData data: CityValidation.CityData) {
-        self.name = data.name
-        self.longitude = data.geometry.location.longitude
-        self.latitude = data.geometry.location.latitude
-        self.image = nil
-        self.weather = nil
-        self.getWeather()
-    }
-    
     private func getWeather() {
         WeatherManager.getWeather(for: self) { (weather) in
             DispatchQueue.main.async {

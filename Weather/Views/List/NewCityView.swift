@@ -74,11 +74,3 @@ struct NewCityView : View {
     }
     
 }
-
-//#if DEBUG
-//struct AddCityView_Previews : PreviewProvider {
-//    static var previews: some View {
-//        AddCityView()
-//    }
-//}
-//#endif

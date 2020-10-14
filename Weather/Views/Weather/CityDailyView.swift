@@ -42,11 +42,3 @@ struct CityDailyView : View {
     }
     
 }
-
-//#if DEBUG
-//struct CityDailyView_Previews : PreviewProvider {
-//    static var previews: some View {
-//        CityDailyView()
-//    }
-//}
-//#endif

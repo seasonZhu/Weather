@@ -35,11 +35,3 @@ struct CityHourlyView : View {
     }
     
 }
-
-//#if DEBUG
-//struct CityHourlyView_Previews : PreviewProvider {
-//    static var previews: some View {
-//        CityHourlyView()
-//    }
-//}
-//#endif

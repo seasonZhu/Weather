@@ -34,11 +34,3 @@ struct CityHeaderView: View {
     }
     
 }
-
-//#if DEBUG
-//struct CityHeader_Previews : PreviewProvider {
-//    static var previews: some View {
-//        CityHeaderView()
-//    }
-//}
-//#endif

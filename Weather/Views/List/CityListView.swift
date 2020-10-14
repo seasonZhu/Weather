@@ -64,11 +64,3 @@ struct CityListView : View {
     }
     
 }
-
-//#if DEBUG
-//struct CityListView_Previews : PreviewProvider {
-//    static var previews: some View {
-//        CityListView()
-//    }
-//}
-//#endif

@@ -33,11 +33,3 @@ struct CityRow : View {
     }
     
 }
-
-//#if DEBUG
-//struct CityRow_Previews : PreviewProvider {
-//    static var previews: some View {
-//        CityRow()
-//    }
-//}
-//#endif
