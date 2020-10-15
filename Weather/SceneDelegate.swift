@@ -62,6 +62,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 }
 
+/// 定位回调
 extension SceneDelegate: LocationDelegate {
     func onLocationSuccess(city: City) {
         if cityStore.cities.contains(where: { (cityInArray) -> Bool in
@@ -77,6 +78,7 @@ extension SceneDelegate: LocationDelegate {
     }
 }
 
+/// 数据持久化
 extension SceneDelegate {
     func saveData() {
         let cityDatas: [Data] = cityStore.cities.compactMap { try? JSONEncoder().encode(CityInSandBox(name: $0.name, longitude: $0.longitude, latitude: $0.latitude)) }

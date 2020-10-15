@@ -58,6 +58,7 @@ struct NewCityView : View {
         guard let name = geocode.city, let location = geocode.location else {
             self.cityStore.cities.append(City.wuhan())
             self.presentationMode.wrappedValue.dismiss()
+            isValidating = false
             return
         }
         
@@ -65,6 +66,16 @@ struct NewCityView : View {
         guard array.count == 2, let longitude = Double(array[0]), let latitude = Double(array[1]) else {
             self.cityStore.cities.append(City.wuhan())
             self.presentationMode.wrappedValue.dismiss()
+            isValidating = false
+            return
+        }
+        
+        if cityStore.cities.contains(where: { (cityInArray) -> Bool in
+            name == cityInArray.name
+        }) {
+            // 如何toast?
+            print("存储列表中已包含该城市")
+            isValidating = false
             return
         }
         
