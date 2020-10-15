@@ -64,3 +64,29 @@ struct CityListView : View {
     }
     
 }
+
+//@available(iOS 14.0, *)
+//extension CityListView {
+//    @main struct RunApp: App {
+//        var body: some Scene {
+//            WindowGroup {
+//                CityListView()
+//                    .onOpenURL(perform: {
+//                        url in print(url)
+//                    })
+//            }
+//        }
+//    }
+//}
+
+//@main
+//struct RunApp: App {
+//    var body: some Scene {
+//        WindowGroup {
+//            CityListView()
+//                .onOpenURL(perform: {
+//                    url in print(url)
+//                })
+//        }
+//    }
+//}
