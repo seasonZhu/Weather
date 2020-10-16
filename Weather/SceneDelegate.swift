@@ -12,6 +12,8 @@ import SwiftUI
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     let cityDatasKey = "cityDatasKey"
+    
+    let groupKey = "group.com.widgetDataShare"
 
     var window: UIWindow?
     
@@ -83,15 +85,28 @@ extension SceneDelegate {
     func saveData() {
         let cityDatas: [Data] = cityStore.cities.compactMap { try? JSONEncoder().encode(CityInSandBox(name: $0.name, longitude: $0.longitude, latitude: $0.latitude)) }
         UserDefaults.standard.set(cityDatas, forKey: cityDatasKey)
+        
+        let appGroup = UserDefaults(suiteName: groupKey)
+        appGroup?.set(cityDatas, forKey: cityDatasKey + groupKey)
     }
     
     func readData() {
-        let value = UserDefaults.standard.value(forKey: cityDatasKey)
+        let value = UserDefaults.standard.object(forKey: cityDatasKey)
         if let cityDatas = value as? [Data] {
             let citys = cityDatas
                 .compactMap { try? JSONDecoder().decode(CityInSandBox.self, from: $0) }
                 .compactMap { City(name: $0.name, longitude: $0.longitude, latitude: $0.latitude) }
             cityStore.cities.append(contentsOf: citys)
+        }
+        
+        let appGroup = UserDefaults(suiteName: groupKey)
+        let groupValue = appGroup?.object(forKey: cityDatasKey + groupKey)
+        
+        if let groupCityDatas = groupValue as? [Data] {
+            let citys = groupCityDatas
+                .compactMap { try? JSONDecoder().decode(CityInSandBox.self, from: $0) }
+                .compactMap { City(name: $0.name, longitude: $0.longitude, latitude: $0.latitude) }
+            print(citys)
         }
     }
 }

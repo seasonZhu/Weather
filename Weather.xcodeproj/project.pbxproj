@@ -81,6 +81,8 @@
 		6192A461253820AF00FE92B1 /* WeatherWidget.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = WeatherWidget.intentdefinition; sourceTree = "<group>"; };
 		6192A462253820B500FE92B1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6192A464253820B500FE92B1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		61C370D02539761F0093769D /* WeatherRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WeatherRelease.entitlements; sourceTree = "<group>"; };
+		61C370D525397ABD0093769D /* WeatherWidgetExtensionRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WeatherWidgetExtensionRelease.entitlements; sourceTree = "<group>"; };
 		61F26ABC2536A79300DE9DF8 /* LocationProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationProtocol.swift; sourceTree = "<group>"; };
 		61F26ABF2536A79300DE9DF8 /* LocationApple.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationApple.swift; sourceTree = "<group>"; };
 		61F26AC12536A79300DE9DF8 /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
@@ -202,6 +204,7 @@
 		A47F0D4722B12C2500A1D9C7 = {
 			isa = PBXGroup;
 			children = (
+				61C370D525397ABD0093769D /* WeatherWidgetExtensionRelease.entitlements */,
 				5036E7C322B7C97200297891 /* README.md */,
 				5036E7C622B7CED600297891 /* Images */,
 				A47F0D5222B12C2500A1D9C7 /* Weather */,
@@ -223,6 +226,7 @@
 		A47F0D5222B12C2500A1D9C7 /* Weather */ = {
 			isa = PBXGroup;
 			children = (
+				61C370D02539761F0093769D /* WeatherRelease.entitlements */,
 				A47F0D5322B12C2500A1D9C7 /* AppDelegate.swift */,
 				A47F0D5522B12C2500A1D9C7 /* SceneDelegate.swift */,
 				61F26ABA2536A79300DE9DF8 /* Location */,
@@ -500,6 +504,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CODE_SIGN_ENTITLEMENTS = WeatherWidgetExtensionRelease.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = B6Q5RKSB5N;
 				INFOPLIST_FILE = WeatherWidget/Info.plist;
@@ -509,7 +514,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = net.snopia.Weather.WeatherWidget;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lostsakura.www.H5OCR.WeatherWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
@@ -657,6 +662,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Weather/WeatherRelease.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "Weather/Preview\\ Content";
 				DEVELOPMENT_TEAM = B6Q5RKSB5N;
@@ -666,7 +672,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = net.snopia.Weather;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lostsakura.www.H5OCR;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
